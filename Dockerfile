@@ -1,16 +1,11 @@
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
-# Install dependencies and Python 3.10 from the deadsnakes PPA
 RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    && add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get update \
-    && apt-get install -y \
-    python3.10 \
-    python3-pip \
-    git \
-    python3-pyyaml \
-    && python3 -m pip install --upgrade pip
+  python3.10 \
+  python3-pip \
+  git
+
+RUN pip3 install PyYAML
 
 COPY feed.py /usr/bin/feed.py
 
